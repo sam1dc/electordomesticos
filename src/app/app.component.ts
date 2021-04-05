@@ -28,7 +28,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 export class AppComponent {
 
 
-  title = 'Domestic-Inventory';
+  title = 'Electrodomesticos';
   resultencontrado=[];
   inventario:any =  [];
   result:any = [];
