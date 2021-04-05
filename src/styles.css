@@ -1,0 +1,139 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+	font-family: Gordita-Ultra;
+	src: url('./assets/fonts/Gordita-Ultra.otf');
+}
+@font-face {
+	font-family: Gordita-Bold;
+	src: url('./assets/fonts/Gordita-Bold.otf');
+}
+@font-face {
+	font-family: Gordita-Light;
+	src: url('./assets/fonts/Gordita-Light.otf');
+}
+@font-face {
+	font-family: Gordita-Regular;
+	src: url('./assets/fonts/Gordita-Regular.otf');
+}
+
+*{
+	font-family: Gordita-Regular;
+	font-size: 13.5px;
+}
+
+.bg_blue{
+	background: #1976d2;
+}
+
+.bg_red{
+	background: #dd0031;
+}
+
+.title{
+	font-family: Gordita-Bold;
+}
+
+.icon_nav{
+	color: yellow;
+	-webkit-text-stroke: 2px black;
+	font-size: 30px;
+}
+
+.btn_white{
+	background: white;
+	border: 2px solid white;
+	transition: .5s all ease;
+}
+
+.btn_white:hover{
+	background: #f5ea20;
+	border: 2px solid white;
+	transition: .5s all ease;
+}
+
+.btn_primary{
+	color: white;
+	background: #1976d2;
+	border: 2px solid #1976d2;
+	transition: .5s all ease;
+}
+
+.btn_primary:hover{
+	background: #0068cf;
+	color: white;
+	border: 2px solid #0068cf;
+	transition: .5s all ease;
+}
+
+.btn_secondary{
+	color: white;
+	background: #dd0031;
+	border: 2px solid #dd0031;
+	transition: .5s all ease;
+}
+
+.btn_secondary:hover{
+	color: white;
+	background: #b50028;
+	border: 2px solid #b50028;
+	transition: .5s all ease;
+}
+
+.btn_close{
+	background: #1976d2 !important;
+}
+
+.modal-header .close {
+    padding: 1.16rem 1.16rem;
+}
+
+.close{
+	opacity: 1;
+}
+
+.close:hover{
+    transition: .5s all ease;
+    background: #dd0031 !important;
+}
+
+.icon_close{
+	color: white;
+	font-size: 24px;
+}
+
+.close:not(:disabled):not(.disabled):hover {
+    opacity: 1;
+    transition: .5s all ease;
+    background: #dd0031 !important;
+}
+
+
+.btn_secondary:focus{
+	box-shadow: 0 0 0 0.2rem rgba(235, 64, 52, .25) !important;
+}
+
+.container-md{
+	transition: 1s all ease;
+}
+.label_font{
+	font-size: 15px;
+}
+
+@media (max-width: 360px) {
+	.modal-header .close { 
+	    padding: 2.09rem 1.1rem;
+	}
+}
+@media screen (max-width: 575px){
+	.label_font{
+	font-size: 14.5px;
+	}
+	.modal{
+		padding-left: 0px;
+	}
+}
+
+.text_info{
+	color: red;
+	font-size: 12px;
+}

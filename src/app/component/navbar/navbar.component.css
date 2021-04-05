@@ -1,0 +1,9 @@
+.search_size{
+	width: 400px;
+}
+@media(max-width: 575px){
+	.search_size{
+		width: 81%;
+		margin-right: 10px;
+	}
+}

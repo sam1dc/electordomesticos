@@ -1,0 +1,106 @@
+.input_file{
+  height: 120px;
+  width: 120px;
+  outline: none;
+  border-radius: 50%;
+}
+
+.img_input{
+  position: absolute;
+  top: 40px;
+  left: 23px;
+  height: 120px;
+  width: 120px;
+  z-index: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.input_file::-webkit-file-upload-button {
+  visibility: hidden;
+  height: 120px;
+  width: 120px;
+}
+.input_file::before {
+  content: '';
+  display: inline-block;
+  border-radius: 50%;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10pt;
+  height: 120px;
+  width: 120px;
+}
+.input_file:hover::before {
+  border-color: black;
+}
+.input_file:active::before {
+ /* transition: .5s all ease; */
+	background: none;
+}
+
+.label_file{
+	position: absolute;
+  top: 40px;
+  left: 23px;
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	border: 1px solid  rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+	z-index: 2;
+}
+.label_file:hover{
+	transition: .5s all ease;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.label_file:active{
+	transition: .5s all ease;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.box_imgprev{
+  width: 150px;
+}
+
+.box_form{
+  width: calc(100% - 150px);
+}
+.textarea{
+  max-height: 79.25px;
+}
+
+@media(max-width: 575px){
+  .img_input{
+  position: absolute;
+  margin-left:auto;
+  margin-right:auto;
+  left:0;
+  right:0;
+  top: 10px;
+  height: 120px;
+  width: 120px;
+}
+.label_file{
+  position: absolute;
+  margin-left:auto;
+  margin-right:auto;
+  left:0;
+  right:0;
+  top: 10px;
+  width: 120px;
+  height: 120px;
+}
+  .box_imgprev{
+    width: 100%;
+  }
+  .box_form{
+    margin-top: 120px;
+    width: 100%;
+  }
+}

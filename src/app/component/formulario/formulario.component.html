@@ -1,0 +1,187 @@
+<div class="modal-body">
+    <form [formGroup]="inventarioInfo">
+
+       <div class="d-flex flex-wrap">
+        <div class="box_imgprev">
+            <label for="file" class="label_file" *ngIf="vista_edit">
+                <input  
+                [formControl]="inputregistrar"
+                class="input_file"
+                type="file" 
+                (change)="changeListenerRegister($event)"
+                multiple #input/>
+            </label>
+            <!-- primara img -->
+            <img *ngIf="vista_edit"
+            [src]="imgprevResgistro"
+            id="file" 
+            class="img_input" 
+            alt="">
+
+            <label for="file" class="label_file" *ngIf="!vista_edit">
+                <input  
+                formControlName="imgprev"
+                class="input_file"
+                type="file" 
+                (change)="changeListener($event)"
+                multiple #input/>
+            </label>
+
+            <img *ngIf="!vista_edit"
+            [src]="tomatuImg"
+            id="file" 
+            class="img_input" 
+            alt="">           
+        </div>
+
+        <div class="d-flex flex-wrap flex-column box_form">
+    	  	<div class="col-sm px-0">
+                <label for="name" class="mb-0 label_font">Nombre del equipo: </label>
+    	    	<input
+                formControlName="nombre_del_equipo"
+                           
+                [ngClass]="{
+                      'form-control is-invalid': nombre.invalid && (nombre.dirty || nombre.touched), 
+                      'form-control  mt-1 mb-2':true }"
+                type="text" 
+                placeholder="Nombre del equipo"
+                id="name"      
+                required>
+                <p 
+                [ngClass]="{
+                      'd-block mb-0 text-danger text_info': nombre.invalid && (nombre.dirty || nombre.touched), 
+                      'd-none':true }"
+                >Error el campo es obligatorio</p>
+    	    </div>
+    		<div class="form-group col-sm px-0 mb-0">
+                <label for="descripcion" class="mb-0 label_font">Descripción: </label>
+    		    <textarea  
+                formControlName="descripcion"
+                
+                class="form-control mt-1 mb-2 textarea" 
+                placeholder="Descripción" 
+                id="descripcion" 
+                rows="3"></textarea>
+    		</div>
+        </div>
+        <div class="col-12 px-0">
+            <label for="consumo" class="mb-0 label_font">Consumo Energetico: (W) </label>
+        	<input 
+            formControlName="consumo_energetico"
+            (keypress)="keyPress($event)"
+            
+            type="number" 
+            pattern="[0-9]*"
+            min="0" 
+            [ngClass]="{
+                      'form-control is-invalid': consumo.invalid && (consumo.dirty || consumo.touched), 
+                      'form-control  mt-1 mb-2':true }"
+            placeholder="Consumo electrico"
+            id="consumo"
+            required>
+            <p 
+            [ngClass]="{
+                      'd-block mb-0 text-danger text_info': consumo.invalid && (consumo.dirty || consumo.touched), 
+                      'd-none':true }"
+            >Error el campo es obligatorio</p>
+        </div>
+        <div class="col-6 pl-0">
+            <label for="peso" class="mb-0 label_font">Peso: (Kg)</label>
+        	<input
+            formControlName="pesoKg" 
+            (keypress)="keyPress($event)" 
+            type="number" 
+            
+            min="0"
+            inputmode="numeric"  
+            [ngClass]="{
+                      'form-control is-invalid': peso.invalid && (peso.dirty || peso.touched), 
+                      'form-control  mt-1 mb-2':true }" 
+            placeholder="Peso kg"
+            id="peso"
+            >
+            <p 
+            [ngClass]="{
+                      'd-block mb-0 text-danger text_info': peso.invalid && (peso.dirty || peso.touched), 
+                      'd-none':true }"
+            >Error el campo es obligatorio</p>
+        </div>
+        <div class="col-6 pr-0">
+            <label for="anchura" class="mb-0 label_font">Anchura: (Cm)</label>
+        	<input 
+            formControlName="anchoCm"
+           
+            (keypress)="keyPress($event)" 
+            type="number" 
+            min="0"
+            [ngClass]="{
+                      'form-control is-invalid': ancho.invalid && (ancho.dirty || ancho.touched), 
+                      'form-control  mt-1 mb-2':true }" 
+            placeholder="Anchura cm"
+            id="anchura" 
+            >
+            <p 
+            [ngClass]="{
+                      'd-block mb-0 text-danger text_info': ancho.invalid && (ancho.dirty || ancho.touched), 
+                      'd-none':true }"
+            >Error el campo es obligatorio</p>
+        </div>
+        <div class="col-6 pl-0">
+            <label for="largo" class="mb-0 label_font">Largo: (Cm)</label>
+        	<input
+            formControlName="largoCm" 
+            
+            (keypress)="keyPress($event)" 
+            type="number" 
+            min="0" 
+            [ngClass]="{
+                      'form-control is-invalid': largo.invalid && (largo.dirty || largo.touched), 
+                      'form-control  mt-1 mb-2':true }"
+            placeholder="largo cm"
+            id="largo"
+            >
+            <p 
+            [ngClass]="{
+                      'd-block mb-0 text-danger text_info': largo.invalid && (largo.dirty || largo.touched), 
+                      'd-none':true }"
+            >Error el campo es obligatorio</p>
+        </div>
+        <div class="col-6 pr-0">
+            <label for="altura" class="mb-0 label_font">Altura: (Cm)</label>
+        	<input 
+            formControlName="alturaCm"
+            
+            (keypress)="keyPress($event)" 
+            type="number" 
+            min="0"  
+            [ngClass]="{
+                      'form-control is-invalid': altura.invalid && (altura.dirty || altura.touched), 
+                      'form-control  mt-1 mb-2':true }" 
+            placeholder="altura cm"
+            id="altura"
+            >
+            <p 
+            [ngClass]="{
+                      'd-block mb-0 text-danger text_info': altura.invalid && (altura.dirty || altura.touched), 
+                      'd-none':true }"
+            >Error el campo es obligatorio</p>
+            <input 
+            formControlName="check"
+            type="checkbox" 
+            class="d-none" 
+            >
+        </div>
+      </div>
+    </form>
+</div>
+<div class="modal-footer" *ngIf="vista_edit">
+
+    <button type="button" class="btn btn_primary" (click)="guardar($event)" 
+    data-dismiss="modal"  >Registrar</button>
+     
+
+</div>
+<div class="modal-footer" *ngIf="!vista_edit">
+    <button type="button" class="btn btn-warning" data-dismiss="modal" (click)="enviarEditado($event)" >Editar</button>
+
+</div>

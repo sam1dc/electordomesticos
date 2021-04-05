@@ -1,0 +1,163 @@
+<app-navbar 
+[inventarioRecibido]="inventario" 
+(boleano)="boleano($event)"
+(result) = "resultado($event)"
+(sendEdit) = "sendEditrecibido($event)"
+
+[vistaEdit] ="titleEdit"
+[busquedarecibida] = "resultBusqueda"
+(limpiarBusqueda) = "limpiandoBusqueNav($event)"
+
+[sumaGetdomesctico] = "sumadomestico"
+[sumaGetpeso] = "sumapeso"
+[sumaGetancho] = "sumaancho"
+[sumaGetlargo] = "sumalargo"
+[sumaGetalto] = "sumaalto"
+
+(sendresultadosCosmeticos) = "resultadoConsumo($event)"
+(enviarPeso) = "resultadoPeso($event)"
+(enviarAncho) = "resultadoAncho($event)"
+(enviarLargo) = "resultadoLargo($event)"
+(enviarAlto) = "resultadoAlto($event)"
+
+[vista_editnav] = "vistabtn_edit"
+[navEditformcontrol] = "formularioControl"
+(enviarVistabtnEdit)= "recibevistaEdit($event)"
+[imagenObtenida] = "imagenFormulario"
+
+(limpiarImg)="limpiandoImg($event)"
+></app-navbar>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg_blue" *ngIf="titleEdit">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Registro del Electrodomésticos</h5>
+        <button type="button" class="close btn_close" data-dismiss="modal" aria-label="Close">
+          <span class="icon_close" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-header bg-warning" *ngIf="!titleEdit">
+        <h5 class="modal-title text-white" id="exampleModalLabel" *ngIf="!titleEdit">Editar Electrodomésticos</h5>
+        <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="icon_close" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <app-formulario
+      [boleanocompa]="vista" 
+      (propagar)="procesaPropagar($event)"
+      (inventarioInfoNew) ="formulariogroup($event)"
+      (vistaform)="vistaform($event)"
+      [inventarioEdit]="inventario" 
+      [editarForm]="formEdit"
+      [formularioRecibido] = "formulario"
+      [indexPosition]="position"
+      [vista_edit] = "vistabtn_edit"
+      [imagenRecibida] = "imagenFormulario"
+      [tomatuImg] = "imagenpreviadelformulario"
+      [limpiandoImagenEdit]="limpiarNav"
+      (enviarImgprevio)="enviaPreviaRecibida($event)"
+      ></app-formulario>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-md">
+  <div class="my-4 d-flex flex-wrap flex-md-column box_result">
+    <div class="d-flex flex-wrap box_result_title col-8 col-md-12 px-0">
+      <p class="mb-0 col-md-4  font_result text-center total_title">Total de consumo energetico:</p>
+      <p class="mb-0 col-md-2 font_result text-center total_title">Total de Peso:</p>
+      <p class="mb-0 col-md-2 font_result text-center total_title">Total de ancho:</p>
+      <p class="mb-0 col-md-2 font_result text-center total_title">Total de largo:</p>
+      <p class="mb-0 col-md-2 font_result text-center total_title">Total de altura:</p>
+    </div>
+    <!-- resultados -->
+    <div class="d-flex flex-wrap col-4 col-md-12 px-0">
+      <p class="mb-0 col-md-4 mx-auto text-center total_line">{{sumadomestico}} w</p>
+      <p class="mb-0 col-md-2 mx-auto text-center total_line">{{sumapeso}} kg</p>
+      <p class="mb-0 col-md-2 mx-auto text-center total_line">{{sumaancho}} cm</p>
+      <p class="mb-0 col-md-2 mx-auto text-center total_line">{{sumalargo}} cm</p>
+      <p class="mb-0 col-md-2 mx-auto text-center total_line">{{sumaalto}} cm</p>
+    </div>
+  </div> 
+</div>
+<div class="container-md">
+  <button type="button" class="btn btn_primary" (click)="busquedaSelect()" *ngIf="vista">Mostrar solo seleccionados</button>
+  <button type="button" class="btn btn-danger" (click)="volver()" *ngIf="!vista">volver</button>
+</div>
+
+
+<div class="container-md" *ngIf="vista">
+<div>
+  <div class="bg_inventario d-flex" *ngIf="inventario.length == 0 ">
+    <h2 class="m-auto text_nohay text-center">No se han registrado Electrodomésticos</h2>
+  </div>
+</div>
+  
+
+  <div class="d-flex flex-wrap electro_box my-4"  *ngFor="let item of inventario; let i = index"  >
+    <div class="container_img d-flex">
+      <img [src]="item.imgprev" alt="" class="img_size my-auto">
+    </div>
+    <div class="content_box d-flex flex-wrap">
+      <h2 class="h6 col-sm-12 col-md-12 line"><span class="electro_title">Titulo:</span> {{item.nombre_del_equipo}}</h2>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Peso:</span> {{item.pesoKg}} kg</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Anchura:</span> {{item.anchoCm}} cm</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Largo:</span> {{item.largoCm}} cm</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Altura:</span> {{item.alturaCm}} cm</p>
+      <p class="h6 col-12 col-sm-12 col-md-8 line"><span class="electro_title">Consumo Electrico:</span> {{item.consumo_energetico}} w</p>
+        <div class="d-flex flex-column col-12">
+          <div class=" box_description" style="min-width:100%; ">
+            <h2 class="h6"><span class="electro_title">Descripción:</span></h2>
+            <p class=" text_description"> {{item.descripcion}} </p>
+          </div>
+          <div class=" box_buttom d-flex" style="min-width:100%; ">
+            <div class="ml-auto">
+              <button 
+              type="buttton"
+              data-toggle="modal" 
+              data-target="#exampleModal"
+              class="btn btn_primary mx-2" 
+              (click)="editar(i)">Editar</button>
+              <button type="buttton" class="btn btn_secondary ml-2" (click)="eliminar(i)">Eliminar</button>
+            </div>
+          </div>
+           <form class="ml-auto select">
+              <div class="mr-2">
+                <input 
+                class="p-2 mr-2"
+                type="checkbox"
+                (click)="checkbusqueda(i,$event.target.checked)"
+                id="{{i}}" 
+                >
+                <label for="{{i}}">seleccionar</label>
+              </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="container-md" *ngIf="!vista">
+  <h2 class="text-center my-3">Resultado de la busqueda: {{resultBusqueda}} </h2>
+  <div class="d-flex flex-wrap electro_box my-4" *ngFor="let item of result; let i = index" >
+    <div class="container_img d-flex">
+      <img [src]="item.imgprev" alt="" class="img_size my-auto">
+    </div>
+    <div class="content_box d-flex flex-wrap">
+      <h2 class="h6 col-sm-12 col-md-12 line"><span class="electro_title">Titulo:</span> {{item.nombre_del_equipo}}</h2>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Peso:</span> {{item.pesoKg}} kg</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Anchura:</span> {{item.anchoCm}} cm</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Largo:</span> {{item.largoCm}} cm</p>
+      <p class="h6 col-6 col-sm-6 col-md-4 line"><span class="electro_title">Altura:</span> {{item.alturaCm}} cm</p>
+      <p class="h6 col-12 col-sm-12 col-md-8 line"><span class="electro_title">Consumo Electrico:</span> {{item.consumo_energetico}} w</p>
+        <div class="d-flex flex-column col-12">
+          <div class=" box_description" style="min-width:100%;  min-height: 96px;">
+            <h2 class="h6"><span class="electro_title">Descripción:</span></h2>
+            <p class=" text_description"> {{item.descripcion}} </p>
+          </div>
+    </div>
+  </div>
+</div>
