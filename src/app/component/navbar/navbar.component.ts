@@ -25,12 +25,14 @@ export class NavbarComponent implements OnInit {
 	@Input() sumaGetancho:number;
 	@Input() sumaGetlargo:number;
 	@Input() sumaGetalto:number;
+	@Input() totalGetespacio:number;
 
 	@Output() sendresultadosCosmeticos = new EventEmitter<number>();
 	@Output() enviarPeso = new EventEmitter<number>();
 	@Output() enviarAncho = new EventEmitter<number>();
 	@Output() enviarLargo = new EventEmitter<number>();
 	@Output() enviarAlto = new EventEmitter<number>();
+	@Output() enviarTotaldeEspacio = new EventEmitter<number>();
 	@Output() enviarVistabtnEdit = new EventEmitter<boolean>();
 
 
@@ -57,6 +59,9 @@ export class NavbarComponent implements OnInit {
 		this.sumaGetancho = 0;
 		this.sumaGetlargo = 0;
 		this.sumaGetalto = 0;
+		this.totalGetespacio = 0;
+
+		let totalObjeto = 0;
 
 		const result = this.inventarioRecibido.filter(nombre => nombre.nombre_del_equipo == this.nombre.value);
 		// console.log("resultado", result);
@@ -87,6 +92,8 @@ export class NavbarComponent implements OnInit {
 			this.sumaGetancho = this.sumaGetancho + result[z].anchoCm;
 			this.sumaGetlargo = this.sumaGetlargo + result[z].largoCm;
 			this.sumaGetalto = this.sumaGetalto + result[z].alturaCm;
+			totalObjeto = result[z].anchoCm*result[z].largoCm*result[z].alturaCm;
+			this.totalGetespacio = this.totalGetespacio + totalObjeto;
        }
 
 		this.sendresultadosCosmeticos.emit(this.sumaGetdomesctico);
@@ -94,6 +101,7 @@ export class NavbarComponent implements OnInit {
 		this.enviarAncho.emit(this.sumaGetancho);
 		this.enviarLargo .emit(this.sumaGetlargo);
 		this.enviarAlto.emit(this.sumaGetalto);
+		this.enviarTotaldeEspacio.emit(this.totalGetespacio);
 
 	}
 

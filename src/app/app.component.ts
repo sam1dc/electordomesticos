@@ -60,6 +60,8 @@ export class AppComponent {
   sumaalto:number=0;
   nombreVal:string;
   position:number;
+  volumenObjeto:number;
+  totalEspacio:number = 0;
 
   //imagen especial
   imagenFormulario:any;
@@ -152,6 +154,8 @@ export class AppComponent {
     this.sumaalto = 0;
     this.sumalargo = 0;
     this.sumaancho = 0;
+    this.volumenObjeto = 0;
+    this.totalEspacio = 0;
 
 
        for (var k = 0; k < resultcheck.length; k++) {
@@ -160,12 +164,15 @@ export class AppComponent {
         this.sumaalto=this.sumaalto+resultcheck[k].alturaCm;
         this.sumalargo=this.sumalargo+resultcheck[k].largoCm;
         this.sumaancho=this.sumaancho+resultcheck[k].anchoCm;
+        this.volumenObjeto = resultcheck[k].alturaCm*resultcheck[k].largoCm*resultcheck[k].anchoCm;
+        this.totalEspacio = this.totalEspacio + this.volumenObjeto;
         // console.log("consumo_energetico:",thisyyyyyyyyyyyyyyyyyyyyy
         // console.log("this.sumapeso:",this.sumapeso);
-        // console.log("this.sumaalto:",this.sumaalto);
-        // console.log("this.sumalargo:",this.sumalargo);
-        // console.log("this.sumaancho",this.sumaancho);
+        console.log("this.sumaalto:",resultcheck[k].alturaCm);
+        console.log("this.sumalargo:",resultcheck[k].largoCm);
+        console.log("this.sumaancho",resultcheck[k].anchoCm);
        }
+       console.log(this.totalEspacio);
     
 
 
@@ -189,6 +196,7 @@ export class AppComponent {
     this.sumaancho = 0;
     this.sumalargo = 0;
     this.sumaalto = 0;
+    this.totalEspacio = 0;
   }
   sendEditrecibido(vistEditar){
     this.titleEdit = vistEditar;
@@ -225,6 +233,9 @@ export class AppComponent {
   enviaPreviaRecibida(imgprevget){
 
     this.imagenpreviadelformulario = imgprevget;
+  }
+  resutadoEspacio(espacio){
+    this.totalEspacio = espacio;
   }
 
 
