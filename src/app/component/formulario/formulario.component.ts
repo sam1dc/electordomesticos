@@ -48,11 +48,11 @@ export class FormularioComponent implements OnInit{
   inventarioInfo = new FormGroup({ 
   nombre_del_equipo:  new FormControl("",[Validators.required]), 
   descripcion:  new FormControl(''),  
-  consumo_energetico: new FormControl(0,[Validators.required]), 
-  pesoKg: new FormControl(0, [Validators.required]), 
-  anchoCm: new FormControl(0, [Validators.required]), 
-  largoCm: new FormControl(0, [Validators.required]),  
-  alturaCm: new FormControl(0, [Validators.required]),
+  consumo_energetico: new FormControl('',[Validators.required]), 
+  pesoKg: new FormControl('', [Validators.required]), 
+  anchoCm: new FormControl('', [Validators.required]), 
+  largoCm: new FormControl('', [Validators.required]),  
+  alturaCm: new FormControl('', [Validators.required]),
   imgprev: new FormControl(''),
   check: new FormControl(false)
 });

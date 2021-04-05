@@ -115,11 +115,11 @@ export class NavbarComponent implements OnInit {
 	    }else{
 			this.navEditformcontrol['controls']['nombre_del_equipo'].patchValue('');
 			this.navEditformcontrol['controls']['descripcion'].patchValue('');
-			this.navEditformcontrol['controls']['consumo_energetico'].patchValue(0);
-			this.navEditformcontrol['controls']['pesoKg'].patchValue(0);
-			this.navEditformcontrol['controls']['anchoCm'].patchValue(0);
-			this.navEditformcontrol['controls']['largoCm'].patchValue(0);
-			this.navEditformcontrol['controls']['alturaCm'].patchValue(0);
+			this.navEditformcontrol['controls']['consumo_energetico'].patchValue('');
+			this.navEditformcontrol['controls']['pesoKg'].patchValue('');
+			this.navEditformcontrol['controls']['anchoCm'].patchValue('');
+			this.navEditformcontrol['controls']['largoCm'].patchValue('');
+			this.navEditformcontrol['controls']['alturaCm'].patchValue('');
 // imagenObtenida
 // imagenRecibidaPa
 // limpiarImg

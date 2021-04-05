@@ -21,6 +21,16 @@
 	font-size: 13.5px;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .bg_blue{
 	background: #1976d2;
 }

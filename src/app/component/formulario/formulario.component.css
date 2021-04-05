@@ -3,6 +3,8 @@
   width: 120px;
   outline: none;
   border-radius: 50%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .img_input{
@@ -17,6 +19,14 @@
 }
 
 .input_file::-webkit-file-upload-button {
+  visibility: hidden;
+  height: 120px;
+  width: 120px;
+}
+
+
+
+input[type=file]::-webkit-file-upload-button {
   visibility: hidden;
   height: 120px;
   width: 120px;
